@@ -74,20 +74,31 @@
 
 // synch()
  
+// "If You Win, You Live. If You Lose, You Die. If You Don't Fight, You Can't Win!"
 
- fetch('https://official-joke-api.appspot.com/jokes/programming/random')
-.then((result)=>result.json())
-.then((results)=>{
-    try{
-    console.log(results[0].setup,results[0].punchline);
-    }
-    catch{
-        console.log("any of error");
-        
-    }
-    
+
+//  fetch('https://aot-api.vercel.app/quote')
+// .then((result)=>(result.json()))
+// .then((nothing)=>{
+//     console.log(nothing);
+// })
+// .catch((err)=>{
+//     console.log(err);   
+// })
+
+fetch('https://aot-api.vercel.app/quote',{
+    method:'POST',
+    headers:{'content-type':'application/json'},
+    body:JSON.stringify({
+        author:"Smile Kawchiha",
+        quote:"You get tired, learn to rest not a quit"
+    })
 })
-.catch((err)=>{
-    console.log(err);
-    
-})
+.then((msg)=>{
+    if (msg.ok)
+        console.log('sucess')
+    else
+        console.log('Fail')
+    return msg.json()})
+.then(res => console.log(res.author,":",res.quote))
+.catch((err)=> console.log(err))
