@@ -86,19 +86,48 @@
 //     console.log(err);   
 // })
 
-fetch('https://aot-api.vercel.app/quote',{
-    method:'POST',
-    headers:{'content-type':'application/json'},
-    body:JSON.stringify({
-        author:"Smile Kawchiha",
-        quote:"You get tired, learn to rest not a quit"
-    })
+// fetch('https://aot-api.vercel.app/quote')
+//     // {
+//     // method:'POST',
+//     // headers:{'content-type':'application/json'},
+//     // body:JSON.stringify({
+//     //     author:"Smile Kawchiha",
+//     //     quote:"You get tired, learn to rest not a quit"
+//     // })}
+
+// .then((msg)=>{
+//     if (msg.ok)
+//         console.log('sucess')
+//     else
+//         console.log('Fail')
+//     return msg.json()})
+// .then(res => console.log(res.author,":",res.quote))
+// .catch((err)=> console.log(err))
+
+
+// let xp = 10;
+// let xpn = 100;
+// let levels = 1;
+
+// function level(){
+//     xp = xp-xpn;
+//     levels++;
+//     xpn+100;
+//     console.log(levels)
+//     console.log(xpn)
+// }
+// level()
+
+let naga = document.getElementById("smile")
+function AOT(){
+fetch('https://aot-api.vercel.app/quote')
+.then(result => result.json())
+.then(output => {
+    smile.innerHTML= (output.author +" : "+output.quote);
+    console.log(output.author,":",output.quote);
 })
-.then((msg)=>{
-    if (msg.ok)
-        console.log('sucess')
-    else
-        console.log('Fail')
-    return msg.json()})
-.then(res => console.log(res.author,":",res.quote))
-.catch((err)=> console.log(err))
+
+.catch((result)=>{
+    console.log(result);
+})
+}
